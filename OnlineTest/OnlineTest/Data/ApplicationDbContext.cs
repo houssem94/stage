@@ -8,12 +8,14 @@ using OnlineTest.Models;
 
 namespace OnlineTest.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<Candidate>
+    public class ApplicationDbContext : IdentityDbContext<User>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
+
+
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
