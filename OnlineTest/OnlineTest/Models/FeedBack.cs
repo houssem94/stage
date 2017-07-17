@@ -12,7 +12,7 @@ namespace OnlineTest.Models
         public int? Id { get; set; }
         public int Rating { get; set; }
         public string Comment { get; set; }
-        public virtual Candidate Candidate { get; set; }
+        public virtual User User { get; set; }
         public virtual Test Test { get; set; }
     }
 }
