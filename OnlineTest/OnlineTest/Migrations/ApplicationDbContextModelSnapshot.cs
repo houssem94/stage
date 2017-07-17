@@ -5,13 +5,12 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using OnlineTest.Data;
 
-namespace OnlineTest.Data.Migrations
+namespace OnlineTest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170717105320_mig1")]
-    partial class mig1
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -124,20 +123,42 @@ namespace OnlineTest.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("OnlineTest.Models.ApplicationUser", b =>
+            modelBuilder.Entity("OnlineTest.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<string>("Address");
+
+                    b.Property<DateTime>("BirthDate");
+
+                    b.Property<string>("CellPhone");
+
+                    b.Property<string>("City");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
+
+                    b.Property<string>("Country");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<string>("FaxPhone");
+
+                    b.Property<string>("FirstName");
+
+                    b.Property<string>("HomePhone");
+
+                    b.Property<string>("IdUSer");
+
+                    b.Property<string>("Image");
+
+                    b.Property<string>("LastName");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -156,6 +177,8 @@ namespace OnlineTest.Data.Migrations
                     b.Property<bool>("PhoneNumberConfirmed");
 
                     b.Property<string>("SecurityStamp");
+
+                    b.Property<string>("Sexe");
 
                     b.Property<bool>("TwoFactorEnabled");
 
@@ -184,7 +207,7 @@ namespace OnlineTest.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("OnlineTest.Models.ApplicationUser")
+                    b.HasOne("OnlineTest.Models.User")
                         .WithMany("Claims")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -192,7 +215,7 @@ namespace OnlineTest.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("OnlineTest.Models.ApplicationUser")
+                    b.HasOne("OnlineTest.Models.User")
                         .WithMany("Logins")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
@@ -205,7 +228,7 @@ namespace OnlineTest.Data.Migrations
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("OnlineTest.Models.ApplicationUser")
+                    b.HasOne("OnlineTest.Models.User")
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
