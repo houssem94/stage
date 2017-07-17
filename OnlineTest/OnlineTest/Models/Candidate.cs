@@ -24,6 +24,11 @@ namespace OnlineTest.Models
         public string Address { get; set; }        
         public string Resume { get; set; }
         public string Email { get; set; }
+        public virtual ICollection<FeedBack> FeedBacks { get; set; }
+        public virtual ICollection<Test> Tests { get; set; }
+        public virtual ICollection<FinalResult> FinalResults { get; set; }
+        public virtual ICollection<UserQA> UserQAs { get; set; }
+
        
     }
 }
