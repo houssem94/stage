@@ -15,7 +15,9 @@ namespace OnlineTest.Models
         public string Screenshot { get; set; }
         public string Image { get; set; }
         public int Expectedtime { get; set; }
-        public int score { get; set; }
+        public int Score { get; set; }
+        public virtual SubCategory SubCategory { get; set; }
+        public virtual ICollection<Test> Tests { get; set; }
 
 
 
