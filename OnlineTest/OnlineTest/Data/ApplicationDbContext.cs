@@ -14,6 +14,14 @@ namespace OnlineTest.Data
             : base(options)
         {
         }
+        public DbSet<User> user { get; set; }
+        public DbSet<Question> questions { get; set; }
+        public DbSet<Test> test { get; set; }
+        public DbSet<FinalResult> finalresult { get; set; }
+        public DbSet<SubCategory> subcategory { get; set; }
+        public DbSet<Category> category { get; set; }
+        public DbSet<FeedBack> feedback { get; set; }
+        public DbSet<UserQA> userqa { get; set; }
 
 
 

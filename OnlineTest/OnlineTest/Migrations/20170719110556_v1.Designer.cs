@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using OnlineTest.Data;
+using OnlineTest.Models;
 
 namespace OnlineTest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170717131718_mig5")]
-    partial class mig5
+    [Migration("20170719110556_v1")]
+    partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -124,14 +125,148 @@ namespace OnlineTest.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("OnlineTest.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("category");
+                });
+
+            modelBuilder.Entity("OnlineTest.Models.FeedBack", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Comment");
+
+                    b.Property<int>("Rating");
+
+                    b.Property<int?>("TestId");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TestId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("feedback");
+                });
+
+            modelBuilder.Entity("OnlineTest.Models.FinalResult", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("Duration");
+
+                    b.Property<int?>("TestId");
+
+                    b.Property<int>("TotalScore");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TestId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("finalresult");
+                });
+
+            modelBuilder.Entity("OnlineTest.Models.Question", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CorrectAnswer");
+
+                    b.Property<int>("Expectedtime");
+
+                    b.Property<string>("Image");
+
+                    b.Property<string>("Questionn");
+
+                    b.Property<int>("Score");
+
+                    b.Property<string>("Screenshot");
+
+                    b.Property<int?>("SubCategoryId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubCategoryId");
+
+                    b.ToTable("questions");
+                });
+
+            modelBuilder.Entity("OnlineTest.Models.SubCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("CategoryId");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("subcategory");
+                });
+
+            modelBuilder.Entity("OnlineTest.Models.Test", b =>
+                {
+                    b.Property<int?>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("CategoryId");
+
+                    b.Property<DateTime>("Date");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("Level");
+
+                    b.Property<float>("Minscore");
+
+                    b.Property<int?>("QuestionId");
+
+                    b.Property<string>("Result");
+
+                    b.Property<string>("Title");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("QuestionId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("test");
+                });
+
             modelBuilder.Entity("OnlineTest.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AccessFailedCount");
-
-                    b.Property<string>("Address");
 
                     b.Property<DateTime>("BirthDate");
 
@@ -141,6 +276,8 @@ namespace OnlineTest.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
+
+                    b.Property<string>("ConfirmPassword");
 
                     b.Property<string>("Country");
 
@@ -153,9 +290,11 @@ namespace OnlineTest.Migrations
 
                     b.Property<string>("FirstName");
 
+                    b.Property<string>("Gender");
+
                     b.Property<string>("HomePhone");
 
-                    b.Property<string>("IdUSer");
+                    b.Property<string>("IdUser");
 
                     b.Property<string>("Image");
 
@@ -171,15 +310,23 @@ namespace OnlineTest.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
                     b.Property<string>("PasswordHash");
 
                     b.Property<string>("PhoneNumber");
 
                     b.Property<bool>("PhoneNumberConfirmed");
 
+                    b.Property<string>("PostalCode");
+
                     b.Property<string>("SecurityStamp");
 
-                    b.Property<string>("Sexe");
+                    b.Property<string>("State");
+
+                    b.Property<string>("Street");
 
                     b.Property<bool>("TwoFactorEnabled");
 
@@ -196,6 +343,28 @@ namespace OnlineTest.Migrations
                         .HasName("UserNameIndex");
 
                     b.ToTable("AspNetUsers");
+                });
+
+            modelBuilder.Entity("OnlineTest.Models.UserQA", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Answer");
+
+                    b.Property<int?>("FinralResultId");
+
+                    b.Property<bool>("IsCorrect");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FinralResultId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("userqa");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
@@ -233,6 +402,68 @@ namespace OnlineTest.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("OnlineTest.Models.FeedBack", b =>
+                {
+                    b.HasOne("OnlineTest.Models.Test", "Test")
+                        .WithMany("Feedbacks")
+                        .HasForeignKey("TestId");
+
+                    b.HasOne("OnlineTest.Models.User", "User")
+                        .WithMany("FeedBacks")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("OnlineTest.Models.FinalResult", b =>
+                {
+                    b.HasOne("OnlineTest.Models.Test", "Test")
+                        .WithMany("FinalResult")
+                        .HasForeignKey("TestId");
+
+                    b.HasOne("OnlineTest.Models.User", "User")
+                        .WithMany("FinalResults")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("OnlineTest.Models.Question", b =>
+                {
+                    b.HasOne("OnlineTest.Models.SubCategory", "SubCategory")
+                        .WithMany("Questions")
+                        .HasForeignKey("SubCategoryId");
+                });
+
+            modelBuilder.Entity("OnlineTest.Models.SubCategory", b =>
+                {
+                    b.HasOne("OnlineTest.Models.Category", "Category")
+                        .WithMany("SubCats")
+                        .HasForeignKey("CategoryId");
+                });
+
+            modelBuilder.Entity("OnlineTest.Models.Test", b =>
+                {
+                    b.HasOne("OnlineTest.Models.Category", "Category")
+                        .WithMany("Test")
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("OnlineTest.Models.Question")
+                        .WithMany("Tests")
+                        .HasForeignKey("QuestionId");
+
+                    b.HasOne("OnlineTest.Models.User", "User")
+                        .WithMany("Tests")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("OnlineTest.Models.UserQA", b =>
+                {
+                    b.HasOne("OnlineTest.Models.FinalResult", "FinralResult")
+                        .WithMany("UserQA")
+                        .HasForeignKey("FinralResultId");
+
+                    b.HasOne("OnlineTest.Models.User", "User")
+                        .WithMany("UserQAs")
+                        .HasForeignKey("UserId");
                 });
         }
     }

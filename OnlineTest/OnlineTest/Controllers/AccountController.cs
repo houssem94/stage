@@ -112,7 +112,8 @@ namespace OnlineTest.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, LastName = model.LastName, FirstName = model.FirstName, BirthDate = model.BirthDate, Sexe = model.Sexe, HomePhone = model.HomePhone, CellPhone = model.CellPhone, FaxPhone = model.FaxPhone, Image = model.Image, Country = model.Country, City = model.City, Address = model.Address, Email = model.Email };
+                
+                var user = new User { UserName = model.Email, LastName = model.LastName, FirstName = model.FirstName, BirthDate = model.BirthDate, Gender = model.Sexe, HomePhone = model.HomePhone, CellPhone = model.CellPhone, FaxPhone = model.FaxPhone, Image = model.Image, Street = model.Address,City = model.City,Country=model.Country, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

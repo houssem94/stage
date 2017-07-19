@@ -13,7 +13,7 @@ namespace OnlineTest.Models
         public int TotalScore { get; set; }
         public DateTime Duration { get; set; }
         public virtual User User { get; set; }
-        public virtual UserQA UserQA { get; set; }
+        public virtual ICollection<UserQA> UserQA { get; set; }
         public virtual Test Test { get; set; }
     }
 }
