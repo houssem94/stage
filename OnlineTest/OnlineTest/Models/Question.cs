@@ -13,7 +13,6 @@ namespace OnlineTest.Models
         public string Questionn { get; set; }
         public string CorrectAnswer { get; set; }
         public string Screenshot { get; set; }
-        public string Image { get; set; }
         public int Expectedtime { get; set; }
         public int Score { get; set; }
         public virtual SubCategory SubCategory { get; set; }
