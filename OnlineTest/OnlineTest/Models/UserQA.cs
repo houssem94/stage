@@ -11,6 +11,8 @@ namespace OnlineTest.Models
         public int Id { get; set; }
         public string Answer { get; set; }
         public bool IsCorrect { get; set; }
+        public virtual FinalResult FinralResult { get; set; }
+        public virtual User User { get; set; }
         
     }
 }

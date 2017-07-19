@@ -15,7 +15,12 @@ namespace OnlineTest.Models
         public DateTime Date { get; set; }
         public string Result { get; set; }
         public float Minscore { get; set; }
-
+        public virtual ICollection<Test> Tests { get; set; }
+        public virtual ICollection<FeedBack> Feedbacks { get; set; }
+        public virtual ICollection<User> Users { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual FinalResult FinalResult { get; set; }
+        
 
     }   
 }
