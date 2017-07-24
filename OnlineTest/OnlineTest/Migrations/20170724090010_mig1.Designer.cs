@@ -9,7 +9,7 @@ using OnlineTest.Models;
 namespace OnlineTest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170724085653_mig1")]
+    [Migration("20170724090010_mig1")]
     partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
