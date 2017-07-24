@@ -9,8 +9,8 @@ using OnlineTest.Models;
 namespace OnlineTest.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20170719110556_v1")]
-    partial class v1
+    [Migration("20170724085653_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -192,8 +192,6 @@ namespace OnlineTest.Migrations
 
                     b.Property<int>("Expectedtime");
 
-                    b.Property<string>("Image");
-
                     b.Property<string>("Questionn");
 
                     b.Property<int>("Score");
@@ -309,10 +307,6 @@ namespace OnlineTest.Migrations
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(100);
 
                     b.Property<string>("PasswordHash");
 

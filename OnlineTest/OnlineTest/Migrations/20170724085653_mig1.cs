@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace OnlineTest.Migrations
 {
-    public partial class v1 : Migration
+    public partial class mig1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -76,7 +76,6 @@ namespace OnlineTest.Migrations
                     LockoutEnd = table.Column<DateTimeOffset>(nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
-                    Password = table.Column<string>(maxLength: 100, nullable: false),
                     PasswordHash = table.Column<string>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(nullable: false),
@@ -207,7 +206,6 @@ namespace OnlineTest.Migrations
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CorrectAnswer = table.Column<string>(nullable: true),
                     Expectedtime = table.Column<int>(nullable: false),
-                    Image = table.Column<string>(nullable: true),
                     Questionn = table.Column<string>(nullable: true),
                     Score = table.Column<int>(nullable: false),
                     Screenshot = table.Column<string>(nullable: true),

@@ -191,8 +191,6 @@ namespace OnlineTest.Migrations
 
                     b.Property<int>("Expectedtime");
 
-                    b.Property<string>("Image");
-
                     b.Property<string>("Questionn");
 
                     b.Property<int>("Score");
@@ -308,10 +306,6 @@ namespace OnlineTest.Migrations
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256);
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(100);
 
                     b.Property<string>("PasswordHash");
 
